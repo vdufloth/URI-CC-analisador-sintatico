@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Analisador Sintático</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="analisador.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Vinicius Dufloth - Analisador Sintático</a>
+    </nav>
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">Verificar Sentenças</div>
+                            <div class="card-body">
+                                <div>Exemplos: dbdadbd &#10003; dadadad &#10003 cccccdadad &#10003 ccdccdccd &#10005;
+                                    dbadadcbd &#10005;</div>
+                                <div class="form-group form-group-sm">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="btn bg-color-padrao" type="button" title = "Insere sentença Aleatória" id="b-gerar-sentenca">&#127922;</button>
+                                        </div>
+                                        <input type="text" class="form-control"
+                                            placeholder="Digite a sentença a ser verificada ..."
+                                            id="i-entrada-sentenca">
+                                        <div class="input-group-append">
+                                            <button class="btn bg-color-padrao" type="button" id="b-verifica-tudo">Verificar Toda Sentença</button>
+                                            <button class="btn btn-danger" type="button" id="b-limpar-tudo" title="Limpar Tudo">&times;</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>                                
+                                <table class="table table-sm table-bordered tabela-passos">
+                                    <thead class="bg-style-table">
+                                        <tr>
+                                            <th>Iteração</th>
+                                            <th>Pilha</th>
+                                            <th>Entrada</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>                               
+                                <button class="btn bg-color-padrao" type="button" id="b-passo-a-passo">Apenas Próximo Passo</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card mb-3">
+                    <div class="card-header">Gramática
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-4" style="font-family: monospace">
+                                <div>GLC</div>
+                                S ::= BA <br>
+                                A ::= aBA | &epsilon; <br>
+                                B ::= DC <br>
+                                C ::= bDC | &epsilon; <br>
+                                D ::= cD&nbsp; | d
+                            </div>
+                            <div class="col-sm-4" style="font-family: monospace">
+                                <div>First</div>
+                                S = {c, d} <br>
+                                A = {a, &epsilon;} <br>
+                                B = {c, d} <br>
+                                C = {b, &epsilon;} <br>
+                                D = {c, d}
+                            </div>
+                            <div class="col-sm-4" style="font-family: monospace">
+                                <div>Follow</div>
+                                S = {$} <br>
+                                A = {$} <br>
+                                B = {a, $} <br>
+                                C = {a, $} <br>
+                                D = {b, a, $}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Tabela de Parsing</div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-sm">
+                            <thead class="bg-style-table">
+                                <tr>
+                                    <th></th>
+                                    <th>a</th>
+                                    <th>b</th>
+                                    <th>c</th>
+                                    <th>d</th>
+                                    <th>$</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th class="bg-style-table">S</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>S &rarr; BA</td>
+                                    <td>S &rarr; BA</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">A</th>
+                                    <td>A &rarr; aBA</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>S &rarr; &epsilon;</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">B</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>B &rarr; DC</td>
+                                    <td>B &rarr; DC</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">C</th>
+                                    <td>C &rarr; &epsilon;</td>
+                                    <td>C &rarr; bDC</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>C &rarr; &epsilon;</td>
+                                </tr>
+                                <tr>
+                                    <th class="bg-style-table">D</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>D &rarr; cD</td>
+                                    <td>D &rarr; d</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
