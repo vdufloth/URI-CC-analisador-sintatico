@@ -25,7 +25,9 @@ function proximoPasso() {
     if (topoDaPilha === '$' && caracterEntrada === '$') {
         analisando = false;
         aceita = true;
-        novaLinha.action = 'Aceita em ' + Niteracao + ' iterações!';
+        var s = 'Aceita em ' + Niteracao + ' iterações!'
+        novaLinha.action = s;
+        $('#input-tip').text(s);
     } else {
         if (topoDaPilha === caracterEntrada) {
             novaLinha.action = 'Lê ' + caracterEntrada;
@@ -46,7 +48,9 @@ function proximoPasso() {
         } else {
             analisando = false;
             aceita = false;
-            novaLinha.action = 'Erro em ' + Niteracao + ' iterações!';
+            var s = 'Erro em ' + Niteracao + ' iterações!'
+            novaLinha.action = s;
+            $('#input-tip').text(s);
         }
     }
 
@@ -61,6 +65,7 @@ function limpaVariaveis() {
     pilha = ['$', 'S'];
     entrada = [];
     tabelaPassos = [];
+    $('#input-tip').text('');
 }
 
 function getEstado() {
@@ -98,11 +103,11 @@ function mostraTabelaPassos(t) {
     $htmlTable = $('.tabela-passos > tbody');
     $htmlTable.html('');
     for (var i = 0; i < t.length; i++) {
-        $row = $('<tr>');
-        $row.append('<td>' + t[i].iteracao + '</td>');
-        $row.append('<td>' + t[i].pilha + '</td>');
-        $row.append('<td>' + t[i].entrada + '</td>');
-        $row.append('<td>' + t[i].action + '</td>');
+        $row = $('<tr class="d-flex">');
+        $row.append('<td class="col-2">' + t[i].iteracao + '</td>');
+        $row.append('<td class="col-2">' + t[i].pilha + '</td>');
+        $row.append('<td class="col-6 text-right">' + t[i].entrada + '</td>');
+        $row.append('<td class="col-2">' + t[i].action + '</td>');
         $htmlTable.append($row);
     }
 }
@@ -178,6 +183,7 @@ $(document).ready(function () {
     $('#b-passo-a-passo').click(function () {
         var valor = passoAPasso($('#i-entrada-sentenca').val());
         atualizaTela(valor);
+        window.scrollTo(0,document.body.scrollHeight);
     });
 
     $('#b-limpar-tudo').click(function () {

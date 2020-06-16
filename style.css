@@ -1,8 +1,3 @@
-.navbar a{
-    color: white !important;
-    font-weight: bold;
-}
-
 input.invalida {
     background-color: #dc354631;
     border-color: #dc3545;
@@ -15,36 +10,7 @@ input.valida {
     color: #1d9439;
 }
 
-.adjust-margin{
-    margin-left: auto;
-    margin-right: auto; 
-}
-
-.margin-top{
-   margin-top: 15%;
-}
-
-.bg-color-padrao{
+.bg-cor-botao{
     background-color: #343a40;
     color: white;
-}
-
-.bg-style-table{  
-    text-align:center;   
-}
-
-.not-margin-top{
-    margin-top: 0;
-}
-
-.adjust-margin-top{
- margin-top: 2%;
-}
-
-#btn-verify-sentence{
-    color:white;
-}
-
-body {
-    padding-bottom: 6rem;
 }

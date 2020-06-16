@@ -28,30 +28,36 @@
                                 <div class="form-group form-group-sm">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button class="btn bg-color-padrao" type="button" title = "Insere sentença Aleatória" id="b-gerar-sentenca">&#127922;</button>
+                                            <button class="btn bg-cor-botao" type="button" title = "Insere sentença Aleatória" id="b-gerar-sentenca">&#127922;</button>
                                         </div>
                                         <input type="text" class="form-control"
                                             placeholder="Digite a sentença a ser verificada ..."
                                             id="i-entrada-sentenca">
                                         <div class="input-group-append">
-                                            <button class="btn bg-color-padrao" type="button" id="b-verifica-tudo">Verificar Toda Sentença</button>
+                                            <button class="btn bg-cor-botao" type="button" id="b-verifica-tudo">Verificar Toda Sentença</button>
                                             <button class="btn btn-danger" type="button" id="b-limpar-tudo" title="Limpar Tudo">&times;</button>
                                         </div>
                                     </div>
-                                    <br>
+                                    <small id="input-tip" class="text-muted" style="margin-left: 50px;"></small>
                                 </div>                                
                                 <table class="table table-sm table-bordered tabela-passos">
-                                    <thead class="bg-style-table">
-                                        <tr>
-                                            <th>Iteração</th>
-                                            <th>Pilha</th>
-                                            <th>Entrada</th>
-                                            <th>Ação</th>
+                                    <thead>
+                                        <tr class="d-flex">
+                                            <th class="col-2">Iteração</th>
+                                            <th class="col-2">Pilha</th>
+                                            <th class="col-5">Entrada</th>
+                                            <th class="col-3">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
-                                </table>                               
-                                <button class="btn bg-color-padrao" type="button" id="b-passo-a-passo">Apenas Próximo Passo</button> 
+                                </table>     
+                                <div>
+                                    <button class="btn bg-cor-botao" type="button" id="b-passo-a-passo">Apenas Próximo Passo</button> 
+                                </div>
+                                <div>
+                                    <small class="text-muted">Após pressionar o botão pela primeira vez,
+                                        é possível apertar espaço para continuar executando</small>
+                                </div>
                             </div>
                         </div>
                     </div>
