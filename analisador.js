@@ -22,6 +22,7 @@ function proximoPasso() {
     var topoDaPilha = pilha[pilha.length - 1];
     var caracterEntrada = entrada[0];
 
+    //Se o topo da pilha e o caracter de entrada ambos são 'finais' a sentença foi aceita
     if (topoDaPilha === '$' && caracterEntrada === '$') {
         analisando = false;
         aceita = true;
@@ -29,23 +30,27 @@ function proximoPasso() {
         novaLinha.action = s;
         $('#input-tip').text(s);
     } else {
+        //Se o topo da pilha e o caracter de entrada são iguais, remove o caracter da pilha e ve 
+        // o próximo da entrada
         if (topoDaPilha === caracterEntrada) {
             novaLinha.action = 'Lê ' + caracterEntrada;
             pilha.pop();
             entrada.shift();
-
         } else if (tabelaParsing[topoDaPilha] !== undefined && tabelaParsing[topoDaPilha][caracterEntrada] !== undefined) {
+            // Empilha o resultado da tabela de parsing para esse caracter
+            // e remove da pilha
             var paraEmpilhar = tabelaParsing[topoDaPilha][caracterEntrada];
             var producao = paraEmpilhar.join('');
             novaLinha.action = topoDaPilha + ' &rarr; ' + producao;
             pilha.pop();
-
             if (producao !== 'ε') {
                 for (var j = paraEmpilhar.length - 1; j >= 0; j--) {
                     pilha.push(paraEmpilhar[j])
                 }
             }
         } else {
+            //Se não tiver registros do topo da pilha na tabela de parsing,
+            // é erro
             analisando = false;
             aceita = false;
             var s = 'Erro em ' + Niteracao + ' iterações!'
